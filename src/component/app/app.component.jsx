@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { ImageSlider } from "../image-slider/image-slider.component";
+import { StyledApp, StyledHeader, StyledBodyAppContainer, StyledInputSearch, StyledInputSearchIcon } from "./app.style";
+import { GoSearch } from "react-icons/go"
 
 const App = () => {
   const [search, setSearch] = useState("")
@@ -11,14 +14,15 @@ const App = () => {
       .then(setImages)
   }
   return (
-    <div className="App"> 
-      <input onChange={(e) => setSearch(e.target.value)} type="text" placeholder="Type here"/>
-      <button onClick={runSearch}>Search</button>
-      <div>
-        {images.length > 0 && <img src={images[0]}/>}
-        
-      </div>
-    </div>
+      <StyledApp>
+        <StyledHeader>
+          <StyledInputSearch onChange={(e) => setSearch(e.target.value)} type="text" placeholder="Type here"/>
+          <StyledInputSearchIcon onClick={runSearch}><GoSearch/></StyledInputSearchIcon>  
+        </StyledHeader>
+        <StyledBodyAppContainer>
+          <ImageSlider images={images}/>
+        </StyledBodyAppContainer>
+      </StyledApp>
   );
 };
 

@@ -1,7 +1,9 @@
 import React from "react";
 import { render } from "react-dom";
 import { App } from "./component/app/app.component";
+import "./style.css"
 
-const reactWillRenderHere = document.querySelector("#react-will-render-here");
+const here = document.querySelector("#react-will-render-here");
+const app = <App/>
 
-render(<App />, reactWillRenderHere);
+render(app, here);
